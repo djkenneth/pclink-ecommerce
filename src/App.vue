@@ -27,6 +27,7 @@
                 v-for="banner in banners"
                 :key="banner.id"
                 left
+                bottom
                 open-on-hover
                 :close-on-content-click="false"
                 offset-y
@@ -59,20 +60,24 @@
 
     <v-main>
       <!-- Carousels -->
+      <router-view></router-view>
       <!-- Group Slide groups -->
     </v-main>
     <!-- Footer -->
+    <Footer />
   </v-app>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld";
+const Footer = () => import("@/components/Footer");
 
 export default {
   name: "App",
 
   components: {
     // HelloWorld
+    Footer
   },
 
   data: () => ({
