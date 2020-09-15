@@ -11,7 +11,7 @@
         <v-card-text class="white--text pb-0">
           <v-row>
             <v-col md="7">
-              <h1 class="mb-3 signup-text">Sign up for newsletter</h1>
+              <h1 class="mb-3 orange-text">Sign up for newsletter</h1>
               <p>
                 Get news about latest tech out in market and more just to be
                 updated in tech world!
@@ -89,7 +89,7 @@
 
         <v-card-text class="white--text">
           Copyright &copy;
-          <strong class="footer-logo-color">PCLINK</strong> all right reserved
+          <strong class="orange-text">PCLINK</strong> all right reserved
           {{ new Date().getFullYear() }}
         </v-card-text>
       </v-card>

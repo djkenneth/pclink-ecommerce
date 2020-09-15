@@ -1,10 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+
 $orange-web-text-color: #fca311;
 $oxford-blue-text-color: #14213d;
 
-.signup-text {
+.orange-text {
   color: $orange-web-text-color;
 }
 
-.footer-logo-color {
-  color: $orange-web-text-color;
+.iconColor {
+  background-color: $orange-web-text-color;
+}
+
+.banner-title {
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
 }

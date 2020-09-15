@@ -85,13 +85,13 @@ export default {
       {
         id: 1,
         btnName: "Computer",
-        img: require("./assets/images/ComputerMenuBanner.jpg"),
+        img: require("./assets/images/menus/ComputerMenuBanner.jpg"),
         lists: ["Desktop PC", "Notebooks", "Mini PC", "Diskless PC", "Software"]
       },
       {
         id: 2,
         btnName: "Components",
-        img: require("./assets/images/ComponentMenuBanner.jpg"),
+        img: require("./assets/images/menus/ComponentMenuBanner.jpg"),
         lists: [
           "Processor",
           "Motherboard",
@@ -108,7 +108,7 @@ export default {
       {
         id: 3,
         btnName: "Peripherals",
-        img: require("./assets/images/PeripheralsMenuBanner.jpg"),
+        img: require("./assets/images/menus/PeripheralsMenuBanner.jpg"),
         lists: [
           "Displays",
           "Audio",
@@ -123,7 +123,7 @@ export default {
       {
         id: 4,
         btnName: "Net Devices",
-        img: require("./assets/images/NetDevicesMenuBanner.jpg"),
+        img: require("./assets/images/menus/NetDevicesMenuBanner.jpg"),
         lists: [
           "Access Point/Range Extender",
           "Adaptop",
@@ -136,7 +136,7 @@ export default {
       {
         id: 5,
         btnName: "Accessories",
-        img: require("./assets/images/AccessoriesMenuBanner.jpg"),
+        img: require("./assets/images/menus/AccessoriesMenuBanner.jpg"),
         lists: [
           "Batteries and Chargers",
           "Cables",
@@ -152,7 +152,7 @@ export default {
       {
         id: 6,
         btnName: "Gadgets",
-        img: require("./assets/images/GadgetsMenuBanner.jpg"),
+        img: require("./assets/images/menus/GadgetsMenuBanner.jpg"),
         lists: [
           "Digital Camera",
           "Media Player",
