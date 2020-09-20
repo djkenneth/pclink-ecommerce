@@ -4,17 +4,30 @@
       <v-container>
         <v-toolbar flat>
           <v-toolbar-title>
-            <v-img alt="PCLINK" :src="require('./assets/images/Logo.png')" />
+            <router-link :to="{ name: 'Home' }">
+              <v-img alt="PCLINK" :src="require('./assets/images/Logo.png')" />
+            </router-link>
           </v-toolbar-title>
           <v-spacer></v-spacer>
           <!-- Badge Component
           :content="messages"
           :value="messages" -->
-          <v-badge :content="0" :value="0" color="error" overlap class="mr-7">
+          <v-badge
+            :content="wishlist"
+            :value="wishlist"
+            color="error"
+            overlap
+            class="mr-7"
+          >
             <v-icon>mdi-heart</v-icon>
           </v-badge>
 
-          <v-badge :content="0" :value="0" color="error" overlap>
+          <v-badge
+            :content="addtocart"
+            :value="addtocart"
+            color="error"
+            overlap
+          >
             <v-icon>mdi-cart</v-icon>
           </v-badge>
         </v-toolbar>
@@ -33,8 +46,8 @@
                 offset-y
               >
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn text v-bind="attrs" v-on="on">
-                    {{ banner.btnName }}
+                  <v-btn text v-bind="attrs" v-on="on" :to="banner.to">
+                    {{ banner.name }}
                   </v-btn>
                 </template>
                 <v-card>
@@ -69,7 +82,8 @@
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld";
+// import { mapState } from "vuex";
+
 const Footer = () => import("@/components/Footer");
 
 export default {
@@ -81,17 +95,21 @@ export default {
   },
 
   data: () => ({
+    wishlist: 1,
+    addtocart: 1,
     banners: [
       {
         id: 1,
-        btnName: "Computer",
-        img: require("./assets/images/menus/ComputerMenuBanner.jpg"),
+        name: "Computer",
+        img: require("@/assets/images/menus/ComputerMenuBanner.jpg"),
+        to: { name: "computer" },
         lists: ["Desktop PC", "Notebooks", "Mini PC", "Diskless PC", "Software"]
       },
       {
         id: 2,
-        btnName: "Components",
-        img: require("./assets/images/menus/ComponentMenuBanner.jpg"),
+        name: "Components",
+        img: require("@/assets/images/menus/ComponentMenuBanner.jpg"),
+        to: { name: "components" },
         lists: [
           "Processor",
           "Motherboard",
@@ -107,8 +125,9 @@ export default {
       },
       {
         id: 3,
-        btnName: "Peripherals",
-        img: require("./assets/images/menus/PeripheralsMenuBanner.jpg"),
+        name: "Peripherals",
+        img: require("@/assets/images/menus/PeripheralsMenuBanner.jpg"),
+        to: { name: "peripherals" },
         lists: [
           "Displays",
           "Audio",
@@ -122,8 +141,9 @@ export default {
       },
       {
         id: 4,
-        btnName: "Net Devices",
-        img: require("./assets/images/menus/NetDevicesMenuBanner.jpg"),
+        name: "Net Devices",
+        img: require("@/assets/images/menus/NetDevicesMenuBanner.jpg"),
+        to: { name: "netdevices" },
         lists: [
           "Access Point/Range Extender",
           "Adaptop",
@@ -135,8 +155,9 @@ export default {
       },
       {
         id: 5,
-        btnName: "Accessories",
-        img: require("./assets/images/menus/AccessoriesMenuBanner.jpg"),
+        name: "Accessories",
+        img: require("@/assets/images/menus/AccessoriesMenuBanner.jpg"),
+        to: { name: "accessories" },
         lists: [
           "Batteries and Chargers",
           "Cables",
@@ -151,8 +172,9 @@ export default {
       },
       {
         id: 6,
-        btnName: "Gadgets",
-        img: require("./assets/images/menus/GadgetsMenuBanner.jpg"),
+        name: "Gadgets",
+        img: require("@/assets/images/menus/GadgetsMenuBanner.jpg"),
+        to: { name: "gadgets" },
         lists: [
           "Digital Camera",
           "Media Player",
@@ -163,6 +185,18 @@ export default {
         ]
       }
     ]
-  })
+  }),
+
+  created() {
+    // console.log(this.products);
+  },
+
+  computed: {
+    // ...mapState({
+    //   products: "products"
+    // })
+  }
 };
 </script>
+
+<style></style>

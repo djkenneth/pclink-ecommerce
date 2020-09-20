@@ -1,15 +1,6 @@
 <template>
   <div>
-    <v-img
-      max-height="200"
-      :src="require('@/assets/images/Banners/banners.jpg')"
-      dark
-    >
-      <v-row justify="center" align="center" style="height: 100%">
-        <h1 class="banner-title">Component/Motherboard</h1>
-      </v-row>
-    </v-img>
-
+    <ProductBanner title="Net Devices"></ProductBanner>
     <v-container>
       <v-row justify="space-between" no-gutters>
         <v-col cols="5">
@@ -26,8 +17,12 @@
         </v-col>
         <v-col cols="3">
           <v-row no-gutters style="height: 100%" justify="end" align="center">
-            <span>view:</span>
-            <v-btn @click="grid = true" :class="{ 'orange darken-1': grid }">
+            <span class="mr-2">view:</span>
+            <v-btn
+              @click="grid = true"
+              class="mr-2"
+              :class="{ 'orange darken-1': grid }"
+            >
               <v-icon>mdi-view-grid</v-icon>
             </v-btn>
             <v-btn @click="grid = false" :class="{ 'orange darken-1': !grid }">
@@ -37,41 +32,45 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
+        <v-col
+          v-for="item in netDeviceItems"
+          :key="item.id"
+          :md="grid ? '3' : '12'"
+        >
           <CardItem
             :grid="grid"
-            :src="
-              require('../../assets/images/cards/asrock-a320m-hdv-amd-a320-micro-atx-motherboard.jpg')
-            "
-            title="ASRock A320M-HDV AMD A320 Micro ATX Motherboard"
-            price="11,250.00"
+            :src="item.image"
+            :title="item.name"
+            :price="item.price"
+            :description="item.description"
           ></CardItem>
         </v-col>
-      </v-row>
-      <v-row justify="center">
-        <v-pagination v-model="page" :length="3" color="#fca311"></v-pagination>
       </v-row>
     </v-container>
   </div>
 </template>
 
 <script>
-const CardItem = () => import("@/components/CardItem");
+import { mapGetters } from "vuex";
 
+const CardItem = () => import("@/components/CardItem");
+const ProductBanner = () => import("@/components/ProductBanner");
 export default {
   components: {
-    CardItem
+    CardItem,
+    ProductBanner
   },
   data: () => ({
     showLimit: [24, 48, 120],
-    grid: true,
-    page: 1
-  })
+    grid: true
+  }),
+
+  computed: {
+    ...mapGetters({
+      netDeviceItems: "netDeviceItems"
+    })
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-.iconColor1 {
-  background-color: #fca311;
-}
-</style>
+<style lang="scss" scoped></style>

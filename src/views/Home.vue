@@ -26,12 +26,12 @@ export default {
   },
   data: () => ({
     items: [
-      { src: require("../assets/images/Banners/Banner1.jpg") },
-      { src: require("../assets/images/Banners/Banner2.jpg") },
-      { src: require("../assets/images/Banners/Banner3.jpg") },
-      { src: require("../assets/images/Banners/Banner4.jpg") },
-      { src: require("../assets/images/Banners/Banner5.jpg") },
-      { src: require("../assets/images/Banners/Banner6.jpg") }
+      { src: require("@/assets/images/Banners/Banner1.jpg") },
+      { src: require("@/assets/images/Banners/Banner2.jpg") },
+      { src: require("@/assets/images/Banners/Banner3.jpg") },
+      { src: require("@/assets/images/Banners/Banner4.jpg") },
+      { src: require("@/assets/images/Banners/Banner5.jpg") },
+      { src: require("@/assets/images/Banners/Banner6.jpg") }
     ]
   }),
   methods: {}
