@@ -9,16 +9,26 @@
         :src="item.src"
       ></v-carousel-item>
     </v-carousel>
-    <SlideItem />
-    <SlideItem />
-    <SlideItem />
-    <SlideItem />
+    <SlideItem
+      slideItemName="Components"
+      :groupCardSlide="componentGroupSlide"
+    />
+    <SlideItem
+      slideItemName="Peripherals"
+      :groupCardSlide="peripheralGroupSlide"
+    />
+    <SlideItem
+      slideItemName="Net Devices"
+      :groupCardSlide="netDeviceGroupSlide"
+    />
+    <!-- <SlideItem slideItemName="Graphics Card" /> -->
   </div>
 </template>
 
 <script>
-const SlideItem = () => import("@/components/SlideItem");
+import { mapGetters } from "vuex";
 
+const SlideItem = () => import("@/components/SlideItem");
 export default {
   name: "Home",
   components: {
@@ -34,6 +44,17 @@ export default {
       { src: require("@/assets/images/Banners/Banner6.jpg") }
     ]
   }),
-  methods: {}
+
+  computed: {
+    ...mapGetters({
+      componentGroupSlide: "componentGroupSlide",
+      peripheralGroupSlide: "peripheralGroupSlide",
+      netDeviceGroupSlide: "netDeviceGroupSlide"
+    })
+  },
+
+  mounted() {
+    console.log(this.componentGroupSlide);
+  }
 };
 </script>

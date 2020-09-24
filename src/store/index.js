@@ -45,6 +45,30 @@ export default new Vuex.Store({
 
     gadgetItems: state => {
       return state.products.filter(product => product.category[0] == "Gadgets");
+    },
+
+    componentGroupSlide: state => {
+      const components = state.products.filter(
+        product => product.category[0] == "Components"
+      );
+
+      return components.slice(0, 10);
+    },
+
+    peripheralGroupSlide: state => {
+      const peripherals = state.products.filter(
+        product => product.category[0] == "Peripherals"
+      );
+
+      return peripherals.slice(0, 10);
+    },
+
+    netDeviceGroupSlide: state => {
+      const netDevice = state.products.filter(
+        product => product.category[0] == "Net devices"
+      );
+
+      return netDevice.slice(0, 10);
     }
   }
 });

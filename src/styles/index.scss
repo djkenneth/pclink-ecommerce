@@ -15,3 +15,15 @@ $oxford-blue-text-color: #14213d;
   font-size: 3rem;
   font-family: "Montserrat", sans-serif;
 }
+
+.divider-border {
+  border-top: 3px solid rgba(0, 0, 0, 0.12);
+}
+
+.slide-item-card-title {
+  min-height: 64px;
+}
+
+.slide-item-card-price {
+  font-size: 1rem;
+}
