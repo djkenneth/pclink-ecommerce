@@ -17,9 +17,9 @@
           :ripple="false"
         >
           <v-img
-            cover
+            contain
             class="white--text align-end"
-            max-height="200px"
+            max-height="200"
             :src="card.image"
           >
           </v-img>
@@ -59,58 +59,6 @@ export default {
   },
   data: () => ({
     model: null
-    // motherboards: [
-    //   {
-    //     id: 1,
-    //     src: require("@/assets/images/cards/asrock-a320m-hdv-amd-a320-micro-atx-motherboard.jpg"),
-    //     title: "ASRock A320M-HDV AMD A320 Micro ATX Motherboard."
-    //   },
-    //   {
-    //     id: 2,
-    //     src: require("@/assets/images/cards/ASUS-H110M-EM.2-MOTHERBOARD.jpg"),
-    //     title: "ASUS H110M-E/M.2 MOTHERBOARD"
-    //   },
-    //   {
-    //     id: 3,
-    //     src: require("@/assets/images/cards/ASUS-A68HM-K-A68H-FM2+-mATX-MOTHERBOARD.jpg"),
-    //     title: "ASUS A68HM-K A68H FM2+ mATX MOTHERBOARD"
-    //   },
-    //   {
-    //     id: 4,
-    //     src: require("@/assets/images/cards/ASUS-STRIX-Z390H-GAMING.jpg"),
-    //     title: "ASUS STRIX Z390H GAMING"
-    //   },
-    //   {
-    //     id: 5,
-    //     src: require("@/assets/images/cards/asus-striz-z370-f-gaming-motherboard1.jpg"),
-    //     title: "ASUS STRIX Z370-F GAMING Motherboard"
-    //   },
-    //   {
-    //     id: 6,
-    //     src: require("@/assets/images/cards/ASUS-TUF-X570-PLUS-GAMING-WI-FI-Motherboard.jpg"),
-    //     title: "ASUS TUF X570-PLUS GAMING WI-FI Motherboard"
-    //   },
-    //   {
-    //     id: 7,
-    //     src: require("@/assets/images/cards/Gigabyte-B450-AORUS-M-(rev. 1.0)-AMD-B450-AORUS-Motherboard-with-Hybrid-Digital-PWM.jpg"),
-    //     title: "Gigabyte B450 AORUS M AMD B450 AORUS Motherboard"
-    //   },
-    //   {
-    //     id: 8,
-    //     src: require("@/assets/images/cards/MSI-Z390-A-PRO-Motherboard.jpg"),
-    //     title: "MSI Z390-A PRO Motherboard"
-    //   },
-    //   {
-    //     id: 9,
-    //     src: require("@/assets/images/cards/MSI-MEG-Z390-GODLIKE-WIFI-Motherboard.jpg"),
-    //     title: "MSI MEG Z390 GODLIKE WIFI Motherboard"
-    //   },
-    //   {
-    //     id: 10,
-    //     src: require("@/assets/images/cards/MSI-B360M-Bazooka-Intel-B360-Motherboard.jpg"),
-    //     title: "MSI B360M Bazooka Intel B360 Motherboard"
-    //   }
-    // ]
   })
 };
 </script>

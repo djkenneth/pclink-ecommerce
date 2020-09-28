@@ -67,9 +67,20 @@ const routes = [
   },
   {
     path: "/overview/:id",
-    name: "Overview",
+    name: "overview",
     component: () =>
       import(/* webpackChunkName: "overview" */ "../views/Overview.vue")
+  },
+  {
+    path: "/wishlist",
+    name: "wishlist",
+    component: () =>
+      import(/* webpackChunkName: "wishlist" */ "../views/Wishlist.vue")
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: () => import(/* webpackChunkName: "cart" */ "../views/Cart.vue")
   }
 ];
 

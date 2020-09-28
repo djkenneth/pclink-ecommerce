@@ -37,13 +37,7 @@
           :key="item.id"
           :md="grid ? '3' : '12'"
         >
-          <CardItem
-            :grid="grid"
-            :src="item.image"
-            :title="item.name"
-            :price="item.price"
-            :description="item.description"
-          ></CardItem>
+          <CardItem :grid="grid" :item="item"></CardItem>
         </v-col>
       </v-row>
     </v-container>

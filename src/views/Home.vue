@@ -51,10 +51,6 @@ export default {
       peripheralGroupSlide: "peripheralGroupSlide",
       netDeviceGroupSlide: "netDeviceGroupSlide"
     })
-  },
-
-  mounted() {
-    console.log(this.componentGroupSlide);
   }
 };
 </script>

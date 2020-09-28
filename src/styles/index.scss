@@ -20,10 +20,37 @@ $oxford-blue-text-color: #14213d;
   border-top: 3px solid rgba(0, 0, 0, 0.12);
 }
 
-.slide-item-card-title {
-  min-height: 64px;
+.slide-item-card-title,
+.card-item-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 .slide-item-card-price {
   font-size: 1rem;
+}
+
+// View: Wishlist
+.wishlist-title {
+  font-size: 18px;
+}
+.wishlist-price {
+  font-size: 20px;
+}
+
+// View: Cart
+.cart-summary-box {
+  background-color: #1d1d1d;
+  border-radius: 20px;
+
+  .summary-total {
+    font-size: 25px;
+
+    .sign {
+      font-size: 16px;
+    }
+  }
 }

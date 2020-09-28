@@ -8,10 +8,27 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   modules: {},
   state: {
-    products
+    products,
+    wishlistItem: []
   },
-  mutations: {},
-  actions: {},
+
+  mutations: {
+    WISHLIST_PRODUCT_ITEM(state, payload) {
+      state.wishlistItem.push(payload);
+      // console.log(state.wishlistItem);
+      localStorage.setItem(
+        "wishlistProduct",
+        JSON.stringify(state.wishlistItem)
+      );
+    }
+  },
+
+  actions: {
+    wishlistProduct({ commit }, wishlistItem) {
+      commit("WISHLIST_PRODUCT_ITEM", wishlistItem);
+    }
+  },
+
   getters: {
     computerItems: state => {
       return state.products.filter(

@@ -39,10 +39,8 @@
         >
           <CardItem
             :grid="grid"
-            :src="item.image"
-            :title="item.name"
-            :price="item.price"
-            :description="item.description"
+            :item="item"
+            @wishlistbtn="wishlistbtn"
           ></CardItem>
         </v-col>
       </v-row>
@@ -69,6 +67,12 @@ export default {
     ...mapGetters({
       computerItems: "computerItems"
     })
+  },
+
+  methods: {
+    wishlistbtn(item) {
+      this.$store.dispatch("wishlistProduct", item);
+    }
   }
 };
 </script>

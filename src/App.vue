@@ -19,7 +19,7 @@
             overlap
             class="mr-7"
           >
-            <v-icon>mdi-heart</v-icon>
+            <v-icon @click="listOfWish">mdi-heart</v-icon>
           </v-badge>
 
           <v-badge
@@ -28,7 +28,7 @@
             color="error"
             overlap
           >
-            <v-icon>mdi-cart</v-icon>
+            <v-icon @click="listOfCart">mdi-cart</v-icon>
           </v-badge>
         </v-toolbar>
       </v-container>
@@ -187,15 +187,22 @@ export default {
     ]
   }),
 
-  created() {
-    // console.log(this.products);
-  },
+  methods: {
+    listOfWish() {
+      this.$router.push({ name: "wishlist" });
+    },
 
-  computed: {
-    // ...mapState({
-    //   products: "products"
-    // })
+    listOfCart() {
+      this.$router.push({ name: "cart" });
+    }
   }
+
+  // mounted() {
+  //   if (localStorage.getItem("wishlistProduct")) {
+  //     let data = JSON.parse(localStorage.getItem("wishlistProduct"));
+  //     console.log(data);
+  //   }
+  // }
 };
 </script>
 
