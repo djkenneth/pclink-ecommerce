@@ -19,7 +19,7 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn outlined small>
+        <v-btn outlined small @click="$emit('addtocart', item)">
           <v-icon>mdi-cart</v-icon>
           Add to cart
         </v-btn>
@@ -54,12 +54,12 @@
           <h2>{{ item.name }}</h2>
         </v-col>
         <v-col cols="3" align-self="center">
-          <v-btn outlined small>
+          <v-btn outlined small @click="$emit('addtocart', item)">
             <v-icon>mdi-cart</v-icon>
             Add to cart
           </v-btn>
 
-          <v-btn icon color="black">
+          <v-btn icon color="black" @click="$emit('wishlistbtn', item)">
             <v-icon>mdi-heart</v-icon>
           </v-btn>
 

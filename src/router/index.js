@@ -12,8 +12,11 @@ const routes = [
   {
     path: "/product",
     name: "product",
-    component: () =>
-      import(/* webpackChunkName: "product" */ "../views/Product.vue"),
+    component: {
+      render(h) {
+        return h("router-view");
+      }
+    },
     children: [
       {
         path: "computer",

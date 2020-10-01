@@ -41,10 +41,14 @@
             :grid="grid"
             :item="item"
             @wishlistbtn="wishlistbtn"
+            @addtocart="addtocart"
           ></CardItem>
         </v-col>
       </v-row>
     </v-container>
+    <v-row justify="center">
+      <v-pagination v-model="page" :length="3" color="#fca311"></v-pagination>
+    </v-row>
   </div>
 </template>
 
@@ -60,6 +64,7 @@ export default {
   },
   data: () => ({
     showLimit: [24, 48, 120],
+    page: 1,
     grid: true
   }),
 
@@ -72,6 +77,13 @@ export default {
   methods: {
     wishlistbtn(item) {
       this.$store.dispatch("wishlistProduct", item);
+    },
+
+    addtocart(item) {
+      this.$store.dispatch("addToCartProduct", {
+        ...item,
+        quantity: 1
+      });
     }
   }
 };

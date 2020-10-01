@@ -9,23 +9,67 @@ export default new Vuex.Store({
   modules: {},
   state: {
     products,
-    wishlistItem: []
+    wishlistProducts: [],
+    addToCartProducts: []
   },
 
   mutations: {
     WISHLIST_PRODUCT_ITEM(state, payload) {
-      state.wishlistItem.push(payload);
-      // console.log(state.wishlistItem);
-      localStorage.setItem(
-        "wishlistProduct",
-        JSON.stringify(state.wishlistItem)
-      );
+      const wishlist = state.wishlistProducts.find(product => {
+        return product.id === payload.id;
+      });
+
+      if (!wishlist) {
+        state.wishlistProducts.push(payload);
+      }
+    },
+
+    ADDTOCART_PRODUCT_ITEM(state, payload) {
+      const addMoreProduct = state.addToCartProducts.find(product => {
+        return product.id === payload.id;
+      });
+
+      if (addMoreProduct) {
+        // addMoreProduct.quantity++;
+        addMoreProduct.quantity += payload.quantity;
+      } else {
+        state.addToCartProducts.push(payload);
+      }
+    },
+
+    QUANTITY_DECREMENT(state, payload) {
+      state.addToCartProducts.find(product => {
+        if (product.id == payload && product.quantity > 1) {
+          product.quantity--;
+        }
+      });
+    },
+
+    QUANTITY_INCREMENT(state, payload) {
+      // state.addToCartProducts.quantity += payload;
+      state.addToCartProducts.find(product => {
+        if (product.id == payload) {
+          product.quantity++;
+        }
+      });
+    },
+
+    DELETE_WISHLIST(state, payload) {
+      state.wishlistProducts.splice(payload, 1);
+      // console.log(payload);
+    },
+
+    DELETE_ADDTOCART(state, payload) {
+      state.addToCartProducts.splice(payload, 1);
     }
   },
 
   actions: {
-    wishlistProduct({ commit }, wishlistItem) {
-      commit("WISHLIST_PRODUCT_ITEM", wishlistItem);
+    wishlistProduct({ commit }, wishlistProduct) {
+      commit("WISHLIST_PRODUCT_ITEM", wishlistProduct);
+    },
+    addToCartProduct({ commit }, cartProduct) {
+      commit("ADDTOCART_PRODUCT_ITEM", cartProduct);
     }
   },
 
@@ -86,6 +130,14 @@ export default new Vuex.Store({
       );
 
       return netDevice.slice(0, 10);
+    },
+
+    wishlistCount: state => {
+      return state.wishlistProducts.length;
+    },
+
+    addtocartCount: state => {
+      return state.addToCartProducts.length;
     }
   }
 });

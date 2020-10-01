@@ -32,16 +32,16 @@
           </v-card-text>
 
           <v-card-actions>
-            <v-btn outlined small>
+            <v-btn outlined small @click="addtocart(card)">
               <v-icon>mdi-cart</v-icon>
               Add to cart
             </v-btn>
 
-            <v-btn icon color="black">
+            <v-btn icon color="black" @click="wishlistbtn(card)">
               <v-icon>mdi-heart</v-icon>
             </v-btn>
 
-            <v-btn icon color="black">
+            <v-btn icon color="black" @click="overview(card)">
               <v-icon>mdi-eye</v-icon>
             </v-btn>
           </v-card-actions>
@@ -59,7 +59,27 @@ export default {
   },
   data: () => ({
     model: null
-  })
+  }),
+
+  methods: {
+    wishlistbtn(item) {
+      this.$store.dispatch("wishlistProduct", item);
+    },
+
+    addtocart(item) {
+      this.$store.dispatch("addToCartProduct", {
+        ...item,
+        quantity: 1
+      });
+    },
+
+    overview(item) {
+      this.$router.push({
+        name: "overview",
+        params: { id: item.id }
+      });
+    }
+  }
 };
 </script>
 

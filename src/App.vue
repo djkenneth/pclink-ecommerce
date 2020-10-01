@@ -13,22 +13,26 @@
           :content="messages"
           :value="messages" -->
           <v-badge
-            :content="wishlist"
-            :value="wishlist"
+            :content="wishlistCount"
+            :value="wishlistCount"
             color="error"
             overlap
             class="mr-7"
           >
-            <v-icon @click="listOfWish">mdi-heart</v-icon>
+            <v-btn @click="listOfWish" icon small depressed>
+              <v-icon>mdi-heart</v-icon>
+            </v-btn>
           </v-badge>
 
           <v-badge
-            :content="addtocart"
-            :value="addtocart"
+            :content="addtocartCount"
+            :value="addtocartCount"
             color="error"
             overlap
           >
-            <v-icon @click="listOfCart">mdi-cart</v-icon>
+            <v-btn @click="listOfCart" icon small depressed>
+              <v-icon>mdi-cart</v-icon>
+            </v-btn>
           </v-badge>
         </v-toolbar>
       </v-container>
@@ -82,7 +86,7 @@
 </template>
 
 <script>
-// import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 const Footer = () => import("@/components/Footer");
 
@@ -186,6 +190,13 @@ export default {
       }
     ]
   }),
+
+  computed: {
+    ...mapGetters({
+      wishlistCount: "wishlistCount",
+      addtocartCount: "addtocartCount"
+    })
+  },
 
   methods: {
     listOfWish() {

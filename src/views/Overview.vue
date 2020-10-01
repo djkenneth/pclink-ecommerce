@@ -54,14 +54,20 @@
           <br />
           <v-row no-gutters>
             <v-col cols="12">
-              <v-btn depressed tile x-large color="#fca311">
+              <v-btn
+                depressed
+                tile
+                x-large
+                color="#fca311"
+                @click="addtocart(product)"
+              >
                 <v-icon left>mdi-cart</v-icon>
                 <b>Add to Cart</b>
               </v-btn>
             </v-col>
           </v-row>
           <v-divider class="my-5 divider-border" width="400"></v-divider>
-          <v-btn tile outlined class="mr-5">
+          <v-btn tile outlined class="mr-5" @click="wishlistbtn(product)">
             <v-icon left>mdi-heart</v-icon>
             Add to Wishlist
           </v-btn>
@@ -215,6 +221,18 @@ export default {
 
     quantityIncrement() {
       this.quantity++;
+    },
+
+    addtocart(item) {
+      const quantity = this.quantity;
+      this.$store.dispatch("addToCartProduct", {
+        ...item,
+        quantity
+      });
+    },
+
+    wishlistbtn(item) {
+      this.$store.dispatch("wishlistProduct", item);
     }
   }
 };

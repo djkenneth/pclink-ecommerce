@@ -5,9 +5,69 @@
         <h1 class="font-weight-black" style="fontSize: 2.5rem">Shoping Cart</h1>
       </v-col>
     </v-row>
-    <v-row no-gutters style="height: 400px" align="center">
+    <v-row no-gutters align="center">
       <v-col cols="8">
-        <!-- <div class="text-center">
+        <div v-if="addToCartProducts.length">
+          <v-card
+            v-for="(product, index) in addToCartProducts"
+            :key="product.id"
+            class="d-flex mb-8 mr-2"
+          >
+            <v-btn
+              dark
+              fab
+              x-small
+              color="error"
+              absolute
+              right
+              top
+              @click="close(index)"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-img width="100" :src="product.image"></v-img>
+            <v-card-text>
+              <div class="text--primary font-weight-bold wishlist-title">
+                {{ product.name }}
+              </div>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn
+                x-small
+                text
+                tile
+                style="font-size: 2em"
+                @click="quantityDecrement(product.id)"
+                >-</v-btn
+              >
+              <v-btn small outlined tile style="font-size: 1.5em">
+                {{ product.quantity }}
+              </v-btn>
+              <v-btn
+                x-small
+                text
+                tile
+                style="font-size: 2em"
+                @click="quantityIncrement(product.id)"
+                >+</v-btn
+              >
+            </v-card-actions>
+            <v-card-actions style="width: 30%">
+              <div class="font-weight-bold wishlist-price mx-auto">
+                ₱{{ product.price }}
+              </div>
+            </v-card-actions>
+          </v-card>
+          <div class="mt-5">
+            <router-link
+              :to="{ name: 'Home' }"
+              class="font-weight-bold"
+              style="fontSize: 23px; text-decoration: none;"
+              >Continue Shopping</router-link
+            >
+          </div>
+        </div>
+        <div v-else class="text-center">
           <h1 class="font-weight-black" style="fontSize: 2.5rem">
             Cart is empty
           </h1>
@@ -22,49 +82,9 @@
             style="border: 4px solid black"
             >Add Product Now!</v-btn
           >
-        </div> -->
-        <v-card class="d-flex mb-8 mr-2">
-          <v-btn dark fab x-small color="error" absolute right top>
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-          <v-img
-            width="100"
-            :src="
-              require('@/assets/images/cards/asrock-a320m-hdv-amd-a320-micro-atx-motherboard.jpg')
-            "
-          ></v-img>
-          <v-card-text>
-            <div class="text--primary font-weight-bold wishlist-title">
-              ASUS STRIX Z370-F GAMING Motherboard.
-            </div>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn
-              x-small
-              text
-              tile
-              style="font-size: 2em"
-              @click="quantityDecrement"
-              >-</v-btn
-            >
-            <v-btn small outlined tile style="font-size: 1.5em">{{
-              quantity
-            }}</v-btn>
-            <v-btn
-              x-small
-              text
-              tile
-              style="font-size: 2em"
-              @click="quantityIncrement"
-              >+</v-btn
-            >
-          </v-card-actions>
-          <v-card-actions>
-            <div class="mx-5 font-weight-bold wishlist-price">₱11,250.00</div>
-          </v-card-actions>
-        </v-card>
+        </div>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="4" align-self="start">
         <div class="cart-summary-box px-5 py-5 white--text mx-auto">
           <h1 class="font-weight-black" style="fontSize: 3rem">
             Summary
@@ -105,20 +125,35 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data: () => ({
     quantity: 1
   }),
 
+  computed: {
+    ...mapState({
+      addToCartProducts: "addToCartProducts"
+    })
+  },
+
+  // mounted() {
+  //   console.log(this.addToCartProducts);
+  // },
+
   methods: {
-    quantityDecrement() {
-      if (this.quantity > 1) {
-        this.quantity--;
-      }
+    quantityDecrement(id) {
+      // this.quantity--;
+      this.$store.commit("QUANTITY_DECREMENT", id);
     },
 
-    quantityIncrement() {
-      this.quantity++;
+    quantityIncrement(id) {
+      this.$store.commit("QUANTITY_INCREMENT", id);
+    },
+
+    close(index) {
+      this.$store.commit("DELETE_ADDTOCART", index);
     }
   }
 };
