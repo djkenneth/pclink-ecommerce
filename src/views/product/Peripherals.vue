@@ -31,18 +31,20 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row no-gutters v-if="grid">
         <v-col
-          v-for="item in peripheralItems"
-          :key="item.id"
-          :md="grid ? '3' : '12'"
+          sm="6"
+          md="4"
+          lg="3"
+          v-for="product in peripheralItems"
+          :key="product.id"
         >
-          <CardItem
-            :grid="grid"
-            :item="item"
-            @wishlistbtn="wishlistbtn"
-            @addtocart="addtocart"
-          ></CardItem>
+          <CardCol :product="product" />
+        </v-col>
+      </v-row>
+      <v-row no-gutters v-else>
+        <v-col cols="12" v-for="product in peripheralItems" :key="product.id">
+          <CardRow :product="product" />
         </v-col>
       </v-row>
     </v-container>
@@ -55,12 +57,15 @@
 <script>
 import { mapGetters } from "vuex";
 
-const CardItem = () => import("@/components/CardItem");
 const ProductBanner = () => import("@/components/ProductBanner");
+const CardCol = () => import("@/components/CardCol");
+const CardRow = () => import("@/components/CardRow");
+
 export default {
   components: {
-    CardItem,
-    ProductBanner
+    ProductBanner,
+    CardCol,
+    CardRow
   },
   data: () => ({
     showLimit: [24, 48, 120],
@@ -72,19 +77,6 @@ export default {
     ...mapGetters({
       peripheralItems: "peripheralItems"
     })
-  },
-
-  methods: {
-    wishlistbtn(item) {
-      this.$store.dispatch("wishlistProduct", item);
-    },
-
-    addtocart(item) {
-      this.$store.dispatch("addToCartProduct", {
-        ...item,
-        quantity: 1
-      });
-    }
   }
 };
 </script>

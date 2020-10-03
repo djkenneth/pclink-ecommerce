@@ -20,12 +20,19 @@ $oxford-blue-text-color: #14213d;
   border-top: 3px solid rgba(0, 0, 0, 0.12);
 }
 
-.slide-item-card-title,
-.card-item-title {
+.slide-item-card-title {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.slide-item-card-title2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 

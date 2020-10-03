@@ -54,7 +54,7 @@
             </v-card-actions>
             <v-card-actions style="width: 30%">
               <div class="font-weight-bold wishlist-price mx-auto">
-                ₱{{ product.price }}
+                ₱{{ totalPrice(product.quantity, product.price) }}
               </div>
             </v-card-actions>
           </v-card>
@@ -91,26 +91,24 @@
           </h1>
           <p class="mb-6">
             Total Quantity
-            <span class="float-right summary-total"
-              ><span class="sign">₱</span> 50.00</span
-            >
+            <span class="float-right summary-total">{{ totalQuantity }}</span>
           </p>
           <p class="mb-6">
             Total Amount
             <span class="float-right summary-total"
-              ><span class="sign">₱</span> 50.00</span
+              ><span class="sign">₱</span> {{ totalAmount }}</span
             >
           </p>
           <p class="mb-10">
-            Shipping total
+            Shipping Fee
             <span class="float-right summary-total"
-              ><span class="sign">₱</span> 1000.00</span
+              ><span class="sign">₱</span> {{ shippngFee }}</span
             >
           </p>
           <p class="mb-12">
             Subtotal
             <span class="float-right summary-total"
-              ><span class="sign">₱</span> 10000.00</span
+              ><span class="sign">₱</span> {{ subTotal }}</span
             >
           </p>
           <div class="text-center">
@@ -129,27 +127,55 @@ import { mapState } from "vuex";
 
 export default {
   data: () => ({
-    quantity: 1
+    // totalQuantity: 0,
+    // totalAmount: 0,
+    shippngFee: 50
+    // subTotal: 0
   }),
 
   computed: {
     ...mapState({
       addToCartProducts: "addToCartProducts"
-    })
-  },
+    }),
 
-  // mounted() {
-  //   console.log(this.addToCartProducts);
-  // },
+    totalQuantity() {
+      const total = this.addToCartProducts.reduce((quantity, total) => {
+        return quantity + total.quantity;
+      }, 0);
+
+      return total;
+    },
+
+    totalAmount() {
+      const total = this.addToCartProducts.reduce((amount, total) => {
+        const price = total.quantity * total.price;
+        return amount + price;
+      }, 0);
+
+      return total;
+    },
+
+    subTotal() {
+      const total = this.addToCartProducts.reduce((amount, total) => {
+        const price = total.quantity * total.price;
+        return amount + price;
+      }, this.shippngFee);
+
+      return total;
+    }
+  },
 
   methods: {
     quantityDecrement(id) {
-      // this.quantity--;
       this.$store.commit("QUANTITY_DECREMENT", id);
     },
 
     quantityIncrement(id) {
       this.$store.commit("QUANTITY_INCREMENT", id);
+    },
+
+    totalPrice(quantity, price) {
+      return quantity * price;
     },
 
     close(index) {

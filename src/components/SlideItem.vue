@@ -2,7 +2,6 @@
   <v-sheet class="mx-auto" max-width="100%">
     <h1 class="ml-15">{{ slideItemName }}</h1>
     <v-slide-group v-model="model" show-arrows center-active>
-      <!-- v-slot:default="{ active, toggle }" -->
       <v-slide-item
         v-for="card in groupCardSlide"
         :key="card.id"
@@ -10,6 +9,7 @@
         v-slot:default="{ toggle }"
       >
         <v-card
+          v-if="card"
           elevation="8"
           max-height="500"
           max-width="300"
