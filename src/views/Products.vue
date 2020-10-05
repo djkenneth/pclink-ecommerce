@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductBanner title="Gadgets"></ProductBanner>
+    <ProductBanner title="Computer"></ProductBanner>
     <v-container>
       <v-row justify="space-between" no-gutters>
         <v-col cols="5">
@@ -36,14 +36,14 @@
           sm="6"
           md="4"
           lg="3"
-          v-for="product in gadgetItems"
+          v-for="product in allProducts"
           :key="product.id"
         >
           <CardCol :product="product" />
         </v-col>
       </v-row>
       <v-row no-gutters v-else>
-        <v-col cols="12" v-for="product in gadgetItems" :key="product.id">
+        <v-col cols="12" v-for="product in allProducts" :key="product.id">
           <CardRow :product="product" />
         </v-col>
       </v-row>
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 const ProductBanner = () => import("@/components/ProductBanner");
 const CardCol = () => import("@/components/CardCol");
@@ -74,9 +74,24 @@ export default {
   }),
 
   computed: {
-    ...mapGetters({
-      gadgetItems: "gadgetItems"
-    })
+    ...mapState({
+      products: "products"
+    }),
+
+    allProducts() {
+      const product = this.products.filter(product => {
+        if (this.$route.query.category && this.$route.query.subCategory) {
+          return (
+            product.category[0] == this.$route.query.category &&
+            product.category[1] == this.$route.query.subCategory
+          );
+        }
+
+        return product.category[0] == this.$route.query.category;
+      });
+
+      return product;
+    }
   }
 };
 </script>

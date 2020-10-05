@@ -30,7 +30,6 @@ export default new Vuex.Store({
       });
 
       if (addMoreProduct) {
-        // addMoreProduct.quantity++;
         addMoreProduct.quantity += payload.quantity;
       } else {
         state.addToCartProducts.push(payload);
@@ -46,7 +45,6 @@ export default new Vuex.Store({
     },
 
     QUANTITY_INCREMENT(state, payload) {
-      // state.addToCartProducts.quantity += payload;
       state.addToCartProducts.find(product => {
         if (product.id == payload) {
           product.quantity++;
@@ -56,7 +54,6 @@ export default new Vuex.Store({
 
     DELETE_WISHLIST(state, payload) {
       state.wishlistProducts.splice(payload, 1);
-      // console.log(payload);
     },
 
     DELETE_ADDTOCART(state, payload) {
@@ -74,40 +71,6 @@ export default new Vuex.Store({
   },
 
   getters: {
-    computerItems: state => {
-      return state.products.filter(
-        product => product.category[0] == "Computers"
-      );
-    },
-
-    componentItems: state => {
-      return state.products.filter(
-        product => product.category[0] == "Components"
-      );
-    },
-
-    peripheralItems: state => {
-      return state.products.filter(
-        product => product.category[0] == "Peripherals"
-      );
-    },
-
-    netDeviceItems: state => {
-      return state.products.filter(
-        product => product.category[0] == "Net devices"
-      );
-    },
-
-    accessoryItems: state => {
-      return state.products.filter(
-        product => product.category[0] == "Accessories"
-      );
-    },
-
-    gadgetItems: state => {
-      return state.products.filter(product => product.category[0] == "Gadgets");
-    },
-
     componentGroupSlide: state => {
       const components = state.products.filter(
         product => product.category[0] == "Components"

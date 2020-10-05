@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <!-- cycle -->
     <v-carousel hide-delimiters cycle height="410">
       <v-carousel-item
         v-for="(item, i) in items"
@@ -21,7 +19,6 @@
       slideItemName="Net Devices"
       :groupCardSlide="netDeviceGroupSlide"
     />
-    <!-- <SlideItem slideItemName="Graphics Card" /> -->
   </div>
 </template>
 

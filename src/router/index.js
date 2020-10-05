@@ -10,63 +10,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue")
   },
   {
-    path: "/product",
-    name: "product",
-    component: {
-      render(h) {
-        return h("router-view");
-      }
-    },
-    children: [
-      {
-        path: "computer",
-        name: "computer",
-        component: () =>
-          import(
-            /* webpackChunkName: "computer" */ "../views/product/Computer.vue"
-          )
-      },
-      {
-        path: "components",
-        name: "components",
-        component: () =>
-          import(
-            /* webpackChunkName: "components" */ "../views/product/Components.vue"
-          )
-      },
-      {
-        path: "peripherals",
-        name: "peripherals",
-        component: () =>
-          import(
-            /* webpackChunkName: "peripherals" */ "../views/product/Peripherals.vue"
-          )
-      },
-      {
-        path: "netdevices",
-        name: "netdevices",
-        component: () =>
-          import(
-            /* webpackChunkName: "netdevices" */ "../views/product/Netdevices.vue"
-          )
-      },
-      {
-        path: "accessories",
-        name: "accessories",
-        component: () =>
-          import(
-            /* webpackChunkName: "accessories" */ "../views/product/Accessories.vue"
-          )
-      },
-      {
-        path: "gadgets",
-        name: "gadgets",
-        component: () =>
-          import(
-            /* webpackChunkName: "gadgets" */ "../views/product/Gadgets.vue"
-          )
-      }
-    ]
+    path: "/products",
+    name: "products",
+    component: () =>
+      import(/* webpackChunkName: "products" */ "../views/Products.vue")
   },
   {
     path: "/overview/:id",

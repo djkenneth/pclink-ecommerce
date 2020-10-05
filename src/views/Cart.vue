@@ -127,10 +127,7 @@ import { mapState } from "vuex";
 
 export default {
   data: () => ({
-    // totalQuantity: 0,
-    // totalAmount: 0,
     shippngFee: 50
-    // subTotal: 0
   }),
 
   computed: {

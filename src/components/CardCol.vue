@@ -21,12 +21,10 @@
     </v-card-text>
 
     <v-card-actions>
-      <!-- @click="$emit('addtocart', product)" -->
       <v-btn outlined small @click="addtocart(product)">
         <v-icon>mdi-cart</v-icon>
         Add to cart
       </v-btn>
-      <!-- @click="$emit('wishlistbtn', product)" -->
       <v-btn icon color="black" @click="wishlistbtn(product)">
         <v-icon>mdi-heart</v-icon>
       </v-btn>
