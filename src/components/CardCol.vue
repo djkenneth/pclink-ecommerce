@@ -9,7 +9,7 @@
     <v-img class="mx-auto" contain max-height="200" :src="product.image">
     </v-img>
     <v-card-title class="px-2">
-      <div class="slide-item-card-title">
+      <div class="slide-item-card-title" style="min-height: 64px">
         {{ product.name }}
       </div>
     </v-card-title>
@@ -64,5 +64,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

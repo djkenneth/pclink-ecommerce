@@ -63,6 +63,7 @@
             Click the button to start wiewing product and add it to wishlist
           </p>
           <v-btn
+            @click="continueShop"
             x-large
             rounded
             color="#fca311"
@@ -96,9 +97,11 @@ export default {
         ...item,
         quantity: 1
       });
+    },
+
+    continueShop() {
+      this.$router.push({ name: "Home" });
     }
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

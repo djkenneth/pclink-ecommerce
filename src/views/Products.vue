@@ -39,7 +39,7 @@
           v-for="product in allProducts"
           :key="product.id"
         >
-          <CardCol :product="product" />
+          <Cards v-if="product" :product="product" />
         </v-col>
       </v-row>
       <v-row no-gutters v-else>
@@ -55,18 +55,31 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 
 const ProductBanner = () => import("@/components/ProductBanner");
-const CardCol = () => import("@/components/CardCol");
 const CardRow = () => import("@/components/CardRow");
+import CardCol from "@/components/CardCol";
+import LoadingComponent from "@/components/Loading";
+
+const Cards = () => ({
+  component: new Promise(resolve => {
+    setTimeout(() => {
+      resolve(CardCol);
+    }, 1000);
+  }),
+  loading: LoadingComponent,
+  delay: 0,
+  timeout: 3000
+});
 
 export default {
   components: {
     ProductBanner,
-    CardCol,
+    Cards,
     CardRow
   },
+
   data: () => ({
     showLimit: [24, 48, 120],
     page: 1,
@@ -95,5 +108,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped></style>

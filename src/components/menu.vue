@@ -10,7 +10,7 @@
       offset-y
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn exact text v-bind="attrs" v-on="on" :to="menu.link">
+        <v-btn exact text v-bind="attrs" v-on="on" :to="menu.link" large>
           {{ menu.name }}
         </v-btn>
       </template>
@@ -417,5 +417,3 @@ export default {
   })
 };
 </script>
-
-<style lang="scss" scoped></style>

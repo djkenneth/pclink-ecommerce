@@ -75,6 +75,7 @@
             Click the button to start wiewing product and add it to wishlist
           </p>
           <v-btn
+            @click="continueShop"
             x-large
             rounded
             color="#fca311"
@@ -177,9 +178,11 @@ export default {
 
     close(index) {
       this.$store.commit("DELETE_ADDTOCART", index);
+    },
+
+    continueShop() {
+      this.$router.push({ name: "Home" });
     }
   }
 };
 </script>
-
-<style lang="scss" scoped></style>
