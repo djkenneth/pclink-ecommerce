@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductBanner title="Computer"></ProductBanner>
+    <ProductBanner :title="productCategory"></ProductBanner>
     <v-container>
       <v-row justify="space-between" no-gutters>
         <v-col cols="5">
@@ -39,7 +39,7 @@
           v-for="product in allProducts"
           :key="product.id"
         >
-          <Cards v-if="product" :product="product" />
+          <Cards :product="product" />
         </v-col>
       </v-row>
       <v-row no-gutters v-else>
@@ -84,6 +84,7 @@ export default {
     showLimit: [24, 48, 120],
     page: 1,
     grid: true
+    // productCategory: ""
   }),
 
   computed: {
@@ -104,6 +105,14 @@ export default {
       });
 
       return product;
+    },
+
+    productCategory() {
+      if (this.$route.query.category && this.$route.query.subCategory) {
+        return `${this.$route.query.category} / ${this.$route.query.subCategory}`;
+      }
+
+      return `${this.$route.query.category}`;
     }
   }
 };

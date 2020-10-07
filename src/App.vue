@@ -25,7 +25,7 @@
       </v-container>
       <template v-slot:extension>
         <div style="width: 100%; background-color: #FCA311;">
-          <v-container class="py-0">
+          <v-container class="py-1">
             <PopoverMenu />
           </v-container>
         </div>

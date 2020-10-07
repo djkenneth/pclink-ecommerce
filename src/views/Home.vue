@@ -8,14 +8,17 @@
       ></v-carousel-item>
     </v-carousel>
     <SlideItem
+      class="mt-10"
       slideItemName="Components"
       :groupCardSlide="componentGroupSlide"
     />
     <SlideItem
+      class="mt-10"
       slideItemName="Peripherals"
       :groupCardSlide="peripheralGroupSlide"
     />
     <SlideItem
+      class="mt-10"
       slideItemName="Net Devices"
       :groupCardSlide="netDeviceGroupSlide"
     />

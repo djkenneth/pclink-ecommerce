@@ -1,12 +1,12 @@
 <template>
-  <v-card
-    v-if="product"
-    elevation="8"
-    max-width="300"
-    :ripple="false"
-    class="ma-1"
-  >
-    <v-img class="mx-auto" contain max-height="200" :src="product.image">
+  <v-card elevation="8" max-width="300" :ripple="false" class="ma-1">
+    <v-img
+      class="mx-auto"
+      contain
+      max-height="200"
+      min-height="200"
+      :src="product.image"
+    >
     </v-img>
     <v-card-title class="px-2">
       <div class="slide-item-card-title" style="min-height: 64px">
@@ -16,7 +16,7 @@
 
     <v-card-text class="text--primary">
       <div class="font-weight-bold" style="fontSize: 1.2rem">
-        ₱{{ product.price }}.00
+        <span class="font-weight-medium">₱</span>{{ product.price }}.00
       </div>
     </v-card-text>
 
