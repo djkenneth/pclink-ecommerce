@@ -38,7 +38,7 @@
       <h1 class="slide-item-card-title2 font-weight-bold mb-3">
         {{ product.name }}
       </h1>
-      <div class="title font-weight-regular mb-3">₱{{ product.price }}.00</div>
+      <div class="title font-weight-medium mb-3">{{ productPrice }}</div>
       <div class="slide-item-card-title">
         {{ product.description }}
       </div>
@@ -51,6 +51,18 @@ export default {
   name: "card-row",
   props: {
     product: Object
+  },
+
+  computed: {
+    productPrice() {
+      const convertPrice = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2
+      }).format(this.product.price);
+
+      return convertPrice;
+    }
   },
 
   methods: {

@@ -84,7 +84,6 @@ export default {
     showLimit: [24, 48, 120],
     page: 1,
     grid: true
-    // productCategory: ""
   }),
 
   computed: {

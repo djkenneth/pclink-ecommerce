@@ -30,8 +30,9 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <div class="mx-10 font-weight-bold wishlist-price">
-            ₱{{ product.price }}
+          <div class="mx-10 font-weight-medium wishlist-price">
+            <!-- ₱{{ product.price }} -->
+            {{ productPrice(product.price) }}
           </div>
         </v-card-actions>
         <v-card-actions>
@@ -88,6 +89,16 @@ export default {
   },
 
   methods: {
+    productPrice(price) {
+      const convertPrice = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2
+      }).format(price);
+
+      return convertPrice;
+    },
+
     close(index) {
       this.$store.commit("DELETE_WISHLIST", index);
     },

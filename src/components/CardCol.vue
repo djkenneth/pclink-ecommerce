@@ -15,8 +15,10 @@
     </v-card-title>
 
     <v-card-text class="text--primary">
-      <div class="font-weight-bold" style="fontSize: 1.2rem">
-        <span class="font-weight-medium">₱</span>{{ product.price }}.00
+      <div class="font-weight-medium" style="fontSize: 1.2rem">
+        <!-- <span class="font-weight-medium">₱</span> -->
+        <!-- {{ product.price }} -->
+        {{ productPrice }}
       </div>
     </v-card-text>
 
@@ -41,6 +43,18 @@ export default {
   name: "card-col",
   props: {
     product: Object
+  },
+
+  computed: {
+    productPrice() {
+      const convertPrice = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2
+      }).format(this.product.price);
+
+      return convertPrice;
+    }
   },
 
   methods: {

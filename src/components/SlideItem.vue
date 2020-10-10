@@ -32,8 +32,9 @@
             </v-card-title>
 
             <v-card-text class="text--primary">
-              <div class="font-weight-bold" style="fontSize: 1.2rem">
-                <span class="font-weight-medium">₱</span>{{ card.price }}.00
+              <div class="font-weight-medium" style="fontSize: 1.2rem">
+                <!-- <span class="font-weight-medium">₱</span>{{ card.price }}.00 -->
+                {{ productPrice(card.price) }}
               </div>
             </v-card-text>
 
@@ -69,6 +70,16 @@ export default {
   }),
 
   methods: {
+    productPrice(price) {
+      const convertPrice = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2
+      }).format(price);
+
+      return convertPrice;
+    },
+
     wishlistbtn(item) {
       this.$store.dispatch("wishlistProduct", item);
     },

@@ -10,9 +10,22 @@
       offset-y
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn exact text v-bind="attrs" v-on="on" :to="menu.link" large>
-          {{ menu.name }}
-        </v-btn>
+        <v-hover v-slot:default="{ hover }">
+          <v-btn
+            tile
+            exact
+            v-bind="attrs"
+            v-on="on"
+            :to="menu.link"
+            large
+            :color="hover ? 'black orange--text' : '#fca311'"
+            elevation="0"
+          >
+            {{ menu.name }}
+            <v-icon v-if="hover" right>mdi-minus</v-icon>
+            <v-icon v-else right>mdi-chevron-down</v-icon>
+          </v-btn>
+        </v-hover>
       </template>
       <v-card>
         <v-img max-height="100" :src="menu.img" />
@@ -20,7 +33,16 @@
         <v-container>
           <v-row class="text-center">
             <v-col cols="3" v-for="(list, index) in menu.lists" :key="index">
-              <v-btn exact text :to="list.subLinks">{{ list.name }}</v-btn>
+              <v-hover v-slot:default="{ hover }">
+                <router-link
+                  class="subCategoryStyle"
+                  :class="{ subCategoryStyleHover: hover }"
+                  :to="list.subLinks"
+                >
+                  <v-icon v-if="hover">mdi-chevron-right</v-icon>
+                  {{ list.name }}
+                </router-link>
+              </v-hover>
             </v-col>
           </v-row>
         </v-container>

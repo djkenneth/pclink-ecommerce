@@ -33,6 +33,18 @@
     </v-app-bar>
 
     <v-main>
+      <v-btn
+        v-scroll="onScroll"
+        v-show="fab"
+        fab
+        fixed
+        bottom
+        right
+        color="#fca311"
+        @click="toTop"
+      >
+        <v-icon x-large>mdi-chevron-up</v-icon>
+      </v-btn>
       <router-view></router-view>
     </v-main>
     <Footer />
@@ -53,6 +65,21 @@ export default {
     Notifications,
     PopoverMenu,
     Footer
+  },
+
+  data: () => ({
+    fab: false
+  }),
+
+  methods: {
+    onScroll(e) {
+      if (typeof window === "undefined") return;
+      const top = window.pageYOffset || e.target.scrollTop || 0;
+      this.fab = top > 20;
+    },
+    toTop() {
+      this.$vuetify.goTo(0);
+    }
   },
 
   computed: {

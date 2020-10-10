@@ -61,3 +61,15 @@ $oxford-blue-text-color: #14213d;
     }
   }
 }
+
+// menu Component
+.subCategoryStyle {
+  text-decoration: none;
+  color: black !important;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.subCategoryStyleHover {
+  text-shadow: 2px 3px 1px #fca311;
+}

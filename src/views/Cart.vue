@@ -53,8 +53,8 @@
               >
             </v-card-actions>
             <v-card-actions style="width: 30%">
-              <div class="font-weight-bold wishlist-price mx-auto">
-                ₱{{ totalPrice(product.quantity, product.price) }}
+              <div class="font-weight-medium wishlist-price mx-auto">
+                {{ productPrice(totalPrice(product.quantity, product.price)) }}
               </div>
             </v-card-actions>
           </v-card>
@@ -86,31 +86,34 @@
         </div>
       </v-col>
       <v-col cols="4" align-self="start">
-        <div class="cart-summary-box px-5 py-5 white--text mx-auto">
+        <div class="cart-summary-box px-5 py-6 white--text mx-auto">
           <h1 class="font-weight-black" style="fontSize: 3rem">
             Summary
           </h1>
-          <p class="mb-6">
+          <p class="mb-7">
             Total Quantity
             <span class="float-right summary-total">{{ totalQuantity }}</span>
           </p>
-          <p class="mb-6">
+          <p class="mb-7">
             Total Amount
-            <span class="float-right summary-total"
-              ><span class="sign">₱</span> {{ totalAmount }}</span
-            >
+            <span class="float-right summary-total">
+              <!-- <span class="sign">₱</span> -->
+              {{ productPrice(totalAmount) }}
+            </span>
           </p>
           <p class="mb-10">
             Shipping Fee
-            <span class="float-right summary-total"
-              ><span class="sign">₱</span> {{ shippngFee }}</span
-            >
+            <span class="float-right summary-total">
+              <!-- <span class="sign">₱</span>  -->
+              {{ productPrice(shippngFee) }}
+            </span>
           </p>
           <p class="mb-12">
             Subtotal
-            <span class="float-right summary-total"
-              ><span class="sign">₱</span> {{ subTotal }}</span
-            >
+            <span class="float-right summary-total">
+              <!-- <span class="sign">₱</span>  -->
+              {{ productPrice(subTotal) }}
+            </span>
           </p>
           <div class="text-center">
             <v-btn large rounded color="#fca311" class="font-weight-bold"
@@ -174,6 +177,16 @@ export default {
 
     totalPrice(quantity, price) {
       return quantity * price;
+    },
+
+    productPrice(price) {
+      const convertPrice = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+        minimumFractionDigits: 2
+      }).format(price);
+
+      return convertPrice;
     },
 
     close(index) {
