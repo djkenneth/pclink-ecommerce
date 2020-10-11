@@ -97,21 +97,18 @@
           <p class="mb-7">
             Total Amount
             <span class="float-right summary-total">
-              <!-- <span class="sign">₱</span> -->
               {{ productPrice(totalAmount) }}
             </span>
           </p>
           <p class="mb-10">
             Shipping Fee
             <span class="float-right summary-total">
-              <!-- <span class="sign">₱</span>  -->
               {{ productPrice(shippngFee) }}
             </span>
           </p>
           <p class="mb-12">
             Subtotal
             <span class="float-right summary-total">
-              <!-- <span class="sign">₱</span>  -->
               {{ productPrice(subTotal) }}
             </span>
           </p>

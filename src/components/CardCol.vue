@@ -16,8 +16,6 @@
 
     <v-card-text class="text--primary">
       <div class="font-weight-medium" style="fontSize: 1.2rem">
-        <!-- <span class="font-weight-medium">₱</span> -->
-        <!-- {{ product.price }} -->
         {{ productPrice }}
       </div>
     </v-card-text>
