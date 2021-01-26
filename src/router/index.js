@@ -7,32 +7,104 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue")
-  },
-  {
-    path: "/products",
-    name: "products",
+    name: "store",
     component: () =>
-      import(/* webpackChunkName: "products" */ "../views/Products.vue")
+      import(
+        /* webpackChunkName: "store" */ "../views/store/MainContainer.vue"
+      ),
+    redirect: { name: "Home" },
+    children: [
+      {
+        path: "",
+        name: "Home",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "../views/store/Home.vue")
+      },
+      {
+        path: "products",
+        name: "products",
+        component: () =>
+          import(
+            /* webpackChunkName: "products" */ "../views/store/Products.vue"
+          )
+      },
+      {
+        path: "overview/:id",
+        name: "overview",
+        component: () =>
+          import(
+            /* webpackChunkName: "overview" */ "../views/store/Overview.vue"
+          )
+      },
+      {
+        path: "wishlist",
+        name: "wishlist",
+        component: () =>
+          import(
+            /* webpackChunkName: "wishlist" */ "../views/store/Wishlist.vue"
+          )
+      },
+      {
+        path: "cart",
+        name: "cart",
+        component: () =>
+          import(/* webpackChunkName: "cart" */ "../views/store/Cart.vue")
+      }
+    ]
   },
   {
-    path: "/overview/:id",
-    name: "overview",
+    path: "/adm",
+    name: "admin",
+    redirect: { name: "login" },
     component: () =>
-      import(/* webpackChunkName: "overview" */ "../views/Overview.vue")
-  },
-  {
-    path: "/wishlist",
-    name: "wishlist",
-    component: () =>
-      import(/* webpackChunkName: "wishlist" */ "../views/Wishlist.vue")
-  },
-  {
-    path: "/cart",
-    name: "cart",
-    component: () => import(/* webpackChunkName: "cart" */ "../views/Cart.vue")
+      import(/* webpackChunkName: "cart" */ "../views/Admin/MainContainer.vue"),
+    children: [
+      {
+        path: "login",
+        name: "login",
+        component: () =>
+          import(/* webpackChunkName: "login" */ "../views/Admin/Login.vue")
+      },
+      {
+        path: "dashboard",
+        name: "dashboard",
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ "../views/Admin/Dashboard.vue"
+          )
+      }
+    ]
   }
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: () =>
+  //     import(/* webpackChunkName: "home" */ "../views/store/Home.vue")
+  // },
+  // {
+  //   path: "/products",
+  //   name: "products",
+  //   component: () =>
+  //     import(/* webpackChunkName: "products" */ "../views/store/Products.vue")
+  // },
+  // {
+  //   path: "/overview/:id",
+  //   name: "overview",
+  //   component: () =>
+  //     import(/* webpackChunkName: "overview" */ "../views/store/Overview.vue")
+  // },
+  // {
+  //   path: "/wishlist",
+  //   name: "wishlist",
+  //   component: () =>
+  //     import(/* webpackChunkName: "wishlist" */ "../views/store/Wishlist.vue")
+  // },
+  // {
+  //   path: "/cart",
+  //   name: "cart",
+  //   component: () =>
+  //     import(/* webpackChunkName: "cart" */ "../views/store/Cart.vue")
+  // }
 ];
 
 const router = new VueRouter({

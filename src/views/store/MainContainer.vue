@@ -1,11 +1,11 @@
 <template>
-  <!-- <v-app>
+  <v-app>
     <v-app-bar app flat color="white">
       <v-container>
         <v-toolbar flat>
           <v-toolbar-title>
             <router-link :to="{ name: 'Home' }">
-              <v-img alt="PCLINK" :src="require('./assets/images/Logo.png')" />
+              <v-img alt="PCLINK" :src="require('@/assets/images/Logo.png')" />
             </router-link>
           </v-toolbar-title>
           <v-spacer></v-spacer>
@@ -31,7 +31,6 @@
         </div>
       </template>
     </v-app-bar>
-
     <v-main>
       <v-btn
         v-scroll="onScroll"
@@ -48,46 +47,45 @@
       <router-view></router-view>
     </v-main>
     <Footer />
-  </v-app> -->
-  <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
-// const Notifications = () => import("@/components/Notifications");
-// const PopoverMenu = () => import("@/components/menu");
-// const Footer = () => import("@/components/Footer");
+const Notifications = () => import("@/components/Notifications");
+const PopoverMenu = () => import("@/components/menu");
+const Footer = () => import("@/components/Footer");
 
-// export default {
-//   name: "App",
+export default {
+  name: "App",
 
-//   components: {
-//     Notifications,
-//     PopoverMenu,
-//     Footer
-//   },
+  components: {
+    Notifications,
+    PopoverMenu,
+    Footer
+  },
 
-//   data: () => ({
-//     fab: false
-//   }),
+  data: () => ({
+    fab: false
+  }),
 
-//   methods: {
-//     onScroll(e) {
-//       if (typeof window === "undefined") return;
-//       const top = window.pageYOffset || e.target.scrollTop || 0;
-//       this.fab = top > 20;
-//     },
-//     toTop() {
-//       this.$vuetify.goTo(0);
-//     }
-//   },
+  methods: {
+    onScroll(e) {
+      if (typeof window === "undefined") return;
+      const top = window.pageYOffset || e.target.scrollTop || 0;
+      this.fab = top > 20;
+    },
+    toTop() {
+      this.$vuetify.goTo(0);
+    }
+  },
 
-//   computed: {
-//     ...mapGetters({
-//       wishlistCount: "wishlistCount",
-//       addtocartCount: "addtocartCount"
-//     })
-//   }
-// };
+  computed: {
+    ...mapGetters({
+      wishlistCount: "wishlistCount",
+      addtocartCount: "addtocartCount"
+    })
+  }
+};
 </script>

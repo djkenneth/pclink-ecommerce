@@ -226,15 +226,15 @@ export default {
               path: "products",
               query: {
                 category: "Peripherals",
-                subCategory: "Surveillance/CCTV"
+                subCategory: "Surveillance/cctv"
               }
             }
           },
           {
-            name: "UPS/AVP",
+            name: "UPS/AVR",
             subLinks: {
               path: "products",
-              query: { category: "Peripherals", subCategory: "UPS/AVR" }
+              query: { category: "Peripherals", subCategory: "Ups/avr" }
             }
           },
           {
@@ -257,12 +257,12 @@ export default {
               path: "products",
               query: {
                 category: "Net devices",
-                subCategory: "Access point/Range Extender"
+                subCategory: "Access point/range extender"
               }
             }
           },
           {
-            name: "Adaptop",
+            name: "Adaptor",
             subLinks: {
               path: "products",
               query: { category: "Net devices", subCategory: "Adaptor" }
@@ -295,7 +295,7 @@ export default {
               path: "products",
               query: {
                 category: "Net devices",
-                subCategory: "Network Attached Storage"
+                subCategory: "Network attached storage"
               }
             }
           }
@@ -349,7 +349,7 @@ export default {
               path: "products",
               query: {
                 category: "Accessories",
-                subCategory: "HDD Dock / Enclosure / Caddy"
+                subCategory: "HDD dock/enclosure/caddy"
               }
             }
           },
@@ -364,14 +364,14 @@ export default {
             name: "Memory Devices",
             subLinks: {
               path: "products",
-              query: { category: "Accessories", subCategory: "Memory Devices" }
+              query: { category: "Accessories", subCategory: "Memory devices" }
             }
           },
           {
             name: "Sleeves / Bags",
             subLinks: {
               path: "products",
-              query: { category: "Accessories", subCategory: "Sleeves / Bags" }
+              query: { category: "Accessories", subCategory: "Sleeves/bags" }
             }
           },
           {
@@ -380,7 +380,7 @@ export default {
               path: "products",
               query: {
                 category: "Accessories",
-                subCategory: "USB Hub / Card Reader"
+                subCategory: "USB hub/Card reader"
               }
             }
           }
@@ -395,14 +395,14 @@ export default {
             name: "Digital Camera",
             subLinks: {
               path: "products",
-              query: { category: "Gadgets", subCategory: "Digital Camera" }
+              query: { category: "Gadgets", subCategory: "Digital camera" }
             }
           },
           {
             name: "Media Player",
             subLinks: {
               path: "products",
-              query: { category: "Gadgets", subCategory: "Media Player" }
+              query: { category: "Gadgets", subCategory: "Media player" }
             }
           },
           {
@@ -416,7 +416,7 @@ export default {
             name: "Mobile Accessories",
             subLinks: {
               path: "products",
-              query: { category: "Gadgets", subCategory: "Mobile Accessories" }
+              query: { category: "Gadgets", subCategory: "Mobile accessories" }
             }
           },
           {
